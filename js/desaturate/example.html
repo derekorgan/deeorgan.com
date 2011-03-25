@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Example of desaturate and switch between gray and color images</title>
+    <script type="text/javascript" src="../jquery-1.5.1.min.js"></script>
+    <script type="text/javascript" src="jQuery.desaturate.js"></script>
+    <script type="text/javascript">
+      var paircount = 0;
+
+      /* If you want to desaturate after page loaded - use onload event
+       * of image.
+      */
+      function initImage(obj)
+      {
+        obj.onload = null;
+        var $newthis = $(obj);
+        if ($.browser.msie)
+        {
+          // You need this only if desaturate png with aplha channel
+          $newthis = $newthis.desaturateImgFix();
+        }
+        // class for easy switch between color/gray version
+        $newthis.addClass("pair_" + ++paircount);
+        var $cloned = $newthis.clone().attr('id', '');
+        // reset onload event on cloned object
+        $cloned.get(0).onload = null;
+        // add cloned after original image, we will switch between
+        // original and cloned later
+        $cloned.insertAfter($newthis).addClass("color").hide();
+        // desaturate original
+        $newthis = $newthis.desaturate();
+        // add events for switch between color/gray versions
+        $newthis.bind("mouseenter mouseleave", desevent);
+        $cloned.bind("mouseenter mouseleave", desevent);
+      };
+
+      function desevent(event) 
+      {
+        var classString = new String($(this).attr('class'));
+        var pair = classString.match(/pair_\d+/);
+        // first I try was $("."+pair).toggle() but IE switching very strange...
+        $("."+pair).hide();
+        if (event.type == 'mouseenter')
+          $("."+pair).filter(".color").show();
+        if (event.type == 'mouseleave')
+          $("."+pair).filter(":not(.color)").show();
+      }
+
+    </script>
+</head>
+<body>
+
+<!-- example can fail with security error if you open it as local file -->
+<img src="test.png" class="des" onload="initImage(this);">
+<br><br>
+<img src="test2.jpg" class="des" onload="initImage(this);" style="width:411px;height:274px;">
+
+</body>
+</html>

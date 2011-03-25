@@ -1,0 +1,91 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Example of desaturate and fadeIn / fadeOut of gray and color images</title>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="jQuery.desaturate.js"></script>
+    <script type="text/javascript">
+      var paircount = 0;
+
+      /* If you want to desaturate after page loaded - use onload event
+       * of image.
+      */
+      function initImage(obj)
+      {
+        obj.onload = null;
+        var $newthis = $(obj);
+        if ($.browser.msie)
+        {
+          // You need this only if desaturate png with aplha channel
+          $newthis = $newthis.desaturateImgFix();
+        }
+        // class for easy switch between color/gray version
+        $newthis.addClass("pair_" + ++paircount);
+        var $cloned = $newthis.clone();
+        // reset onload event on cloned object
+        $cloned.get(0).onload = null;
+        // add cloned after original image, we will switch between
+        // original and cloned later
+        $cloned.insertAfter($newthis).addClass("color").hide();
+        // desaturate original
+        $newthis.desaturate();
+      };
+
+      $(function(){
+
+        $('.xxx').data('desaturate', {'level':0.5});
+
+        $(".switched_images").bind("mouseenter mouseleave", function(event) {
+            if (event.type == 'mouseenter')
+            {
+              //$(".des:not(.color)", this).fadeOut(1000);
+              $(".des.color", this).fadeIn(500);
+            }
+            if (event.type == 'mouseleave')
+            {
+              //$(".des:not(.color)", this).fadeIn(1000);
+              $(".des.color", this).fadeOut(500);
+            }
+          });
+      });
+    </script>
+    
+    <style type="text/css">
+      .switched_images {
+        position: relative;
+        width:300px;
+        height:300px;
+      }
+      .des {
+        position: absolute;
+        top:0;
+        left:0;
+        z-index: 10;
+      }
+      .color {
+        z-index: 15 !important;
+      }
+    </style>
+    
+</head>
+<body>
+
+<!-- example can fail with security error if you open it as local file -->
+
+<div class="switched_images" id="mg1">
+<img src="test2.jpg" class="des" onload="initImage(this);">
+</div>
+
+<div class="switched_images" id="mg2" style="display:none;">
+<img src="test2.jpg" class="des" onload="initImage(this);" style="width:411px;height:274px;">
+</div>
+
+<a href="#" onclick="$('#mg2').toggle(); return false;">toggle hided</a>,
+<a href="#" onclick="$('#show').val($('#mg1').html()); return false;">show 1</a>,
+<a href="#" onclick="$('#show').val($('#mg2').html()); return false;">show 2</a>
+<br>
+<textarea rows="20" cols="80" id="show"></textarea>
+
+</body>
+</html>

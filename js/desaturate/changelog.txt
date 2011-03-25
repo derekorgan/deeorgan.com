@@ -1,0 +1,38 @@
+0.6 (23 Sep 2010)
+ Delay canvas generation. It's allow to use .desaturate() in any part on document without
+   'onload' image attribute. Check example3.html.
+ New option 'onchange'. It's callback called after image switched to gray. This can be usefull for
+   Chrome/Firefox because real desaturate happens only after image loaded. Check example3.html.
+ Known bugs: in Chrome (and may be some other) chain is broken, so $('IMG').desaturate().fadeOut(5000)
+   will not work. Please, use 'onchange' callback.
+
+0.5.2 (04 Aug 2010)
+ Support images which currently hided (display:none) and have no size. Width and height attributes not
+ work correctly. For cross-browser solution you need to add inline style="width:XXXpx; height:XXXpx;". 
+
+0.5.1 (18 Jun 2010)
+ Bugfix
+
+0.5 (18 Jun 2010)
+ IE bugfix in autofix image and in examples also
+ New options: level (level of grayscale effect, from 0 (color) to 1 (gray)), ignored in IE;
+              rgb (array of RGB channel multiplier for compose grayscale), ignored in IE.
+ Support of options from metadata plugin (example: <img class="des { 'level': 0.5 }">)
+ Support of options stored into .data('desaturate') (example: $('.xxx').data('desaturate', {'level':0.5}))
+
+0.4 (16 Jun 2010)
+ Code refactoring.
+ .desaturate method now can have options. Only one options at this moment 'iefix' - autofix images for IE.
+ .pngIE method renamed to .desaturateImgFix.
+ .desaturateImgFix and autofix of .desaturate for IE now replace all type of images for opacity support.
+ For non-IE browsers IMG tag now replaced with CANVAS (old method with .toDataURL is broken in Chrome and latest Opera).
+ .desaturate() now replace target and return new node as result.
+
+0.3.1 (15 Jun 2010)
+ FF bugfix
+
+0.3 (15 Jun 2010)
+ Support of jQuery's fadeIn/FadeOut in IE browsers.
+
+0.2 (10 Jun 2010)
+ Inital public release.

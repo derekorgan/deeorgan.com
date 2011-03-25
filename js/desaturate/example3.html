@@ -1,0 +1,31 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Example of desaturate and switch between gray and color images</title>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script type="text/javascript" src="jQuery.desaturate.js"></script>
+</head>
+<body>
+
+<img src="test2.jpg" class="des" id="img1" style="width:411px;height:274px;">
+<img src="test2.jpg" class="des" id="img2" style="width:411px;height:274px;" onload="$(this).desaturate();"><br>
+<img src="test2.jpg" class="des" id="img3" style="width:411px;height:274px;">
+<img src="test2.jpg" class="des" id="img4" style="width:411px;height:274px;"><br>
+
+<p>1. Color image, 2. Desaturated with onload image<br>
+  3. Desaturated with delay and fadeOut with chain, 4. same, but fadeOut with 'onswitch'</p>
+
+<script type="text/javascript">
+  // Before version 0.6 of desaturate plugin this call can fail for Firefox/Chrome becasue image not loaded yet.
+  // Version 0.6 can solve it.
+  $("#img3").desaturate().fadeOut(5000);
+  $("#img4").desaturate({
+    'onswitch': function() {
+      $(this).fadeOut(5000);
+    }
+  });
+</script>
+
+</body>
+</html>

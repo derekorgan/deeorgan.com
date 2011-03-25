@@ -1,0 +1,60 @@
+@charset "utf-8";
+/* CSS Document */
+
+* {
+	margin: 0px;
+	padding: 0px;
+	border: 0px;
+}
+
+body {
+	color: 	#ffffff;
+	background-color: #2929229;
+	background-image:url(../images/charcoal_bg.jpg);
+	padding: 0px;
+	margin: 0px;
+	overflow:none;
+	font-family:Calibri, Arial;
+	font-size:12px;
+}
+
+h2 {
+	text-transform: uppercase;
+	color: #11ffff;
+	font-size: 1.2em;
+	margin-bottom: 12px;
+	
+	
+}
+
+p {
+	font-size: 1em;
+	margin-bottom: 1em;
+	line-height: 1.4em;
+	font-weight:600;
+}
+
+#container{
+	margin: 18px 18px 18px 0;
+	width: 3000px;
+	
+}
+
+.block {
+	background-color:#FFFFFF;
+	border-radius: 5px;
+	-moz-border-radius : 5px;
+	padding: 12px;
+	width:inherit;
+	margin-left: 18px;
+	float:left;
+	height: 500px;
+}  
+
+.info_block {
+	background-color: #959898;
+	height: 220px;
+	padding: 12px;
+	margin-bottom:12px;
+	
+}

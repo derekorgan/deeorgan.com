@@ -26,6 +26,10 @@ h2 {
 	
 	
 }
+.off h2 {
+    color: #ffffff;
+}
+
 
 p {
 	font-size: 1em;
@@ -60,6 +64,6 @@ p {
 }
 
 .off{
-	opacity:0.3;
+	opacity:0.4;
 
 }

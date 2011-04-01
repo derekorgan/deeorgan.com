@@ -19,7 +19,51 @@ $(document).ready(function()
 	$(".off img").desaturate();
 	$(".off").desaturate();
 
+
+
+    $("#container").each(function(i, area){
+        var $area = $(this);
+        
+        $(".block", $area).each(function(j, img) {
+            var $img = $(this), x = Math.round($img.position().left),
+                w = $img.outerWidth(), right = x + w,
+                left = x - w;
+            
+            $area.scroll(function(e) {
+                var sx = $(this).scrollLeft(), opac = .2;
+                
+                if( sx <= right && sx >= left ) {
+                    if( sx >= left && sx <= x ) {
+                        if(left < 0) {
+                           sx = w - (x - sx);
+                        } else {
+                           sx -= left;
+                        }
+                        
+                        pct = sx/w;
+                    } else {
+                        delta = right -sx;
+                        pct = delta/w;
+                    }
+                    
+                    //if(pct == Infinity || isNaN(pct))
+                    //{ return; }
+                    
+                    opac += (.8 * pct);
+                }
+                
+                $img.css("opacity", opac);
+            }).scroll();
+        });
+    });
+    
+    
+    
+
+
 });
+
+
 
 </script>
 </head>
@@ -27,7 +71,7 @@ $(document).ready(function()
 <body>
 <div id="container">
 
-   	<div class="block off" style="width:750px;">
+   	<div class="block" style="width:750px;">
        	<img src="photos/dave_wife.jpg" alt="Wedding shot" width="750" height="500" />        
 	</div>
     
@@ -35,7 +79,7 @@ $(document).ready(function()
        	<img src="photos/alice.jpg" alt="Alice in wonderland" width="333" height="500" />       
     </div>
 
-<div class="block off" style="width:366px">
+<div class="block" style="width:366px">
 <div class="info_block">
         	<h2>Who?</h2>
             <p>Hi, I'm Dee. I am a fresh, energetic professional photographer based out of Dublin, Ireland.</p>
@@ -44,12 +88,15 @@ $(document).ready(function()
         <img src="photos/me.jpg" alt="Deirdre Organ" width="366" height="244" />
 	</div>
 	
-   	<div class="block off" style="width:759px;">
+   	<div class="block" style="width:759px;">
        	<img src="photos/baby.jpg" alt="Wedding shot" width="759" height="500" />
    	</div>
 
-   	<div class="block off" style="width:317px;">
+   	<div class="block" style="width:317px;">
        	<img src="photos/yvonne.jpg" alt="Wedding shot" width="317" height="500" />
    	</div>
+    <div class="empty_block">
+    &nbsp;
+    </div>
 </body>
 </html>

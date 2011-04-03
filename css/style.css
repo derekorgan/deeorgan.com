@@ -67,14 +67,8 @@ p {
 }  
 
 .empty_block {
-	width: 90%;
-	padding: 8px;
-	margin-left: 36px;
-	margin-top: 18px;
-	height: 500px;
-	display:inline-block;
-	opacity:0.4;
-	white-space:normal;
+
+	background: transparent;
 
 }
 
@@ -89,5 +83,31 @@ p {
 
 .off{
 	opacity:0.4;
+
+}
+
+.clear {
+	clear:both;
+	
+}
+
+#menu {
+
+	
+	padding:18px;
+	background-color:#1c1c1c;	
+	display:block;
+	position:fixed;
+	left: 0px;
+	top:566px;
+	border-bottom-right-radius: 12px;
+	border-top-right-radius: 12px;
+	-moz-border-radius-topright: 12px;
+	-moz-border-radius-bottomright: 12px;
+	color: #11ffff;
+	text-transform: uppercase;
+	word-spacing: 24px;
+	font-size: 1.2em;
+	
 
 }

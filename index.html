@@ -53,9 +53,9 @@ $(document).ready(function()
                     opac += (.8 * pct);
                 }
 
-				if (opac < .7){
-					$block.find('img').desaturate();
-				}
+				//if (opac < .7){
+				//	$block.find('img').desaturate();
+				//}
                 
                 $block.css("opacity", opac);
             }).scroll();
@@ -76,6 +76,9 @@ $(document).ready(function()
 <body>
 <div id="container">
 
+   	<div class="block empty_block" style="width:20%">
+       	       
+	</div>
    	<div class="block" style="width:750px;">
        	<img src="photos/dave_wife.jpg" alt="Wedding shot" width="750" height="500" />        
 	</div>
@@ -105,10 +108,14 @@ $(document).ready(function()
        	       
 	</div>
 		
-		
-	<div id="menu">
-		Bio Services Blog Newsletter Contact
-	</div>		
+	<div id="left_nav">	
+		<div id="menu">
+			<a href="#bio">Bio</a> <a href="#services">Services</a> <a href="#blog">Blog</a> <a href="#kudos">Kudos</a> <a href="#contact">Contact</a>
+		</div>
+        <div id="left_arrow">
+        		<a href="">Move Left</a>
+        </div>
+    </div> 		
 </div><!-- end Container -->
 		
 </body>

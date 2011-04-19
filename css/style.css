@@ -91,15 +91,19 @@ p {
 	
 }
 
+#left_nav {
+	position:fixed;
+	left: 0px;
+	top:566px;
+	
+}
+
 #menu {
 
 	
 	padding:18px;
 	background-color:#1c1c1c;	
 	display:block;
-	position:fixed;
-	left: 0px;
-	top:566px;
 	border-bottom-right-radius: 12px;
 	border-top-right-radius: 12px;
 	-moz-border-radius-topright: 12px;
@@ -108,6 +112,32 @@ p {
 	text-transform: uppercase;
 	word-spacing: 24px;
 	font-size: 1.2em;
-	
+	float: left;
 
+}
+
+#menu a, #menu a:visited {
+	color: #11ffff;
+	text-decoration:none;
+}
+#menu a:hover {
+	color: #ffffff;
+}
+
+#left_arrow {
+	float: left;
+	margin: 10px 0 0 18px;
+}
+
+#left_arrow a, #left_arrow a:link {
+	background-image: url('../images/left-arrow.png');
+	width: 19px;
+	height: 34px;
+	text-indent: -999em;
+	display: block;
+}
+
+
+#left_arrow a:hover {
+	background-position: 19px 0;
 }

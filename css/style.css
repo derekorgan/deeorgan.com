@@ -52,21 +52,17 @@ p {
 }
 
 #wrapper {
-	height:550px;
+
 	position: absolute;
 	top: 50%;
-
 	margin: -300px 0 0 0;
-
+	height: 550px;
+	overflow: none;
 	
 }
 
 
-.logo {
 
-	
-    margin-left:51px;
-}
 
 .block {
 	background-color:#ffffff;
